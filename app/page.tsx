@@ -1,8 +1,117 @@
+"use client"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { X } from "lucide-react"
+
+// ✏️ EDIT YOUR SOCIAL LINKS HERE
+const SOCIAL_LINKS = {
+  github: "https://github.com/awzheng",
+  linkedin: "https://linkedin.com/in/andrewzheng2007",
+  email: "andrewhaozheng@gmail.com",
+  twitter: "https://twitter.com/awzhenga", // optional - leave empty to hide
+  instagram: "https://instagram.com/awzheng", // optional - leave empty to hide
+}
+
+function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) return null
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/50" />
+      <div 
+        className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-lg shadow-xl p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        <h2 className="text-2xl font-bold mb-2">Get in Touch</h2>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">
+          Connect with me!
+        </p>
+
+        <div className="space-y-3">
+          <a
+            href={`mailto:${SOCIAL_LINKS.email}`}
+            className="flex items-center gap-3 p-3 rounded-lg border hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          >
+            <span className="text-2xl">📧</span>
+            <div>
+              <div className="font-medium">Email</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">{SOCIAL_LINKS.email}</div>
+            </div>
+          </a>
+
+          <a
+            href={SOCIAL_LINKS.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 p-3 rounded-lg border hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          >
+            <span className="text-2xl">💻</span>
+            <div>
+              <div className="font-medium">GitHub</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">@awzheng</div>
+            </div>
+          </a>
+
+          <a
+            href={SOCIAL_LINKS.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 p-3 rounded-lg border hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          >
+            <span className="text-2xl">💼</span>
+            <div>
+              <div className="font-medium">LinkedIn</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Andrew Zheng</div>
+            </div>
+          </a>
+
+          {SOCIAL_LINKS.twitter && (
+            <a
+              href={SOCIAL_LINKS.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-3 rounded-lg border hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            >
+              <span className="text-2xl">🐦</span>
+              <div>
+                <div className="font-medium">Twitter</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">@awzhenga</div>
+              </div>
+            </a>
+          )}
+
+          {SOCIAL_LINKS.instagram && (
+            <a
+              href={SOCIAL_LINKS.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-3 rounded-lg border hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            >
+              <span className="text-2xl">📷</span>
+              <div>
+                <div className="font-medium">Instagram</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">@awzheng</div>
+              </div>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function Home() {
+  const [isContactOpen, setContactOpen] = useState(false)
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
       {/* Hero Section */}
@@ -15,11 +124,13 @@ export default function Home() {
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
             Building hardware projects and exploring embedded systems. <br></br>
             Passionate about circuit design and microcontroller programming. <br></br>
-            DECA Product Management World Champion 2024 + Project Management Lover!
+            DECA World Champion 2024 + Project Management Lover!
           </p>
           <div className="flex gap-4">
             <Button size="lg">View Projects</Button>
-            <Button size="lg" variant="outline">Contact Me</Button>
+            <Button size="lg" variant="outline" onClick={() => setContactOpen(true)}>
+              Contact Me
+            </Button>
           </div>
         </div>
       </section>
@@ -84,23 +195,6 @@ export default function Home() {
               </div>
             </CardContent>
           </Card>
-
-          {/* <Card>
-            <CardHeader>
-              <CardTitle>Your Next Project</CardTitle>
-              <CardDescription>Add your real projects here</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                Replace these example cards with your actual hardware projects. 
-                Include photos, descriptions, and links to GitHub repos.
-              </p>
-              <div className="flex gap-2">
-                <Badge variant="secondary">Your Tech</Badge>
-                <Badge variant="secondary">Stack Here</Badge>
-              </div>
-            </CardContent>
-          </Card> */}
         </div>
       </section>
 
@@ -128,23 +222,22 @@ export default function Home() {
 
           <Card>
             <CardHeader>
-              <CardTitle>LED Matrix Display</CardTitle>
-              <CardDescription>32x32 RGB LED matrix with animations</CardDescription>
+              <CardTitle>Featherweight Finance</CardTitle>
+              <CardDescription>Financial Literacy Video Game</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                Designed custom PCB and programmed ESP32 to control RGB LED matrix. 
-                Features scrolling text and animations via web interface.
+                A charming exploration game where Prodigy meets Animal Crossing, designed using learning science.<br></br>
+                2nd Place @ McMaster University High School Business Heroes Season 18
               </p>
               <div className="flex gap-2">
-                <Badge variant="secondary">ESP32</Badge>
-                <Badge variant="secondary">PCB Design</Badge>
-                <Badge variant="secondary">WiFi</Badge>
+                <Badge variant="secondary">Unity</Badge>
+                <Badge variant="secondary">Product Management</Badge>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          {/* <Card>
             <CardHeader>
               <CardTitle>Your Next Project</CardTitle>
               <CardDescription>Add your real projects here</CardDescription>
@@ -159,7 +252,7 @@ export default function Home() {
                 <Badge variant="secondary">Stack Here</Badge>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </section>
 
@@ -184,15 +277,17 @@ export default function Home() {
         <div className="flex justify-between items-center">
           <p className="text-slate-600 dark:text-slate-400">© 2025 Andrew Zheng</p>
           <div className="flex gap-4">
-            <a href="https://github.com/awzheng" className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
+            <a href={SOCIAL_LINKS.github} className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
               GitHub
             </a>
-            <a href="https://linkedin.com/in/andrewzheng2007" className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
+            <a href={SOCIAL_LINKS.linkedin} className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
               LinkedIn
             </a>
           </div>
         </div>
       </footer>
+
+      <ContactModal isOpen={isContactOpen} onClose={() => setContactOpen(false)} />
     </main>
   )
 }
