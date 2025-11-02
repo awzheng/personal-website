@@ -1,11 +1,9 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { X } from "lucide-react"
-
-document.title = "Andrew Zheng - Portfolio"
 
 // ✏️ EDIT YOUR SOCIAL LINKS HERE
 const SOCIAL_LINKS = {
@@ -113,6 +111,11 @@ function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
 
 export default function Home() {
   const [isContactOpen, setContactOpen] = useState(false)
+
+    // Set page title on client side
+  useEffect(() => {
+    document.title = "Andrew Zheng - Portfolio"
+  }, [])
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
