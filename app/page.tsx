@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { X } from "lucide-react"
 
+document.title = "Andrew Zheng - Portfolio"
+
 // ✏️ EDIT YOUR SOCIAL LINKS HERE
 const SOCIAL_LINKS = {
   github: "https://github.com/awzheng",
@@ -204,18 +206,20 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Arduino Weather Station</CardTitle>
-              <CardDescription>IoT device with temperature & humidity sensors</CardDescription>
+              <CardTitle>DECA Coaching</CardTitle>
+              <CardDescription>2+ years experience<br />
+              <i>DECA is North America's largest business and entrepreneurship competition for high school students.</i></CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                Built a complete weather monitoring system using Arduino Uno, DHT22 sensor, 
-                and LCD display. Implemented data logging to SD card.
+                Founded in 2024, I created a comprehensive curriculum for my own DECA and business case study course, including an AI-powered revision platform.<br />
+                Helped St. Robert CHS win 33% of Team Ontario's first-place glass awards at ICDC 2024.<br />
+                I've managed 100+ students from St. Robert CHS, and taught 25+ students from 10+ other schools in my own course, turning business beginners into ICDC 2025 world finalists!
               </p>
               <div className="flex gap-2">
-                <Badge variant="secondary">Arduino</Badge>
-                <Badge variant="secondary">C++</Badge>
-                <Badge variant="secondary">IoT</Badge>
+                <Badge variant="secondary">Entrepreneurship</Badge>
+                <Badge variant="secondary">Leadership</Badge>
+                <Badge variant="secondary">Product Management</Badge>
               </div>
             </CardContent>
           </Card>
