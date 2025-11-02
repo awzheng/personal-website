@@ -127,8 +127,8 @@ export default function Home() {
             Andrew Zheng
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
-            Building hardware projects and exploring embedded systems. <br></br>
-            Passionate about circuit design and microcontroller programming. <br></br>
+            From business to rocket science 🚀 <br></br>
+            Growing my passion for hardware and circuit design every day at Waterloo. <br></br>
             DECA World Champion 2024 + Project Management Lover!
           </p>
           <div className="flex gap-4">
