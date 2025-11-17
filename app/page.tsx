@@ -207,6 +207,35 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <h2 className="text-3xl font-bold mb-8">Software & Other Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
+          
+          <Card>
+            <CardHeader>
+              <CardTitle>WarriorWit</CardTitle>
+              <CardDescription>
+                <a 
+                  href="https://warriorwit.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  warriorwit.vercel.app
+                </a>
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                An AI-powered texting coach to help awkward Waterloo students improve their online communication skills.<br />
+                Built with React, Tailwind CSS, and Gemini 2.5 API.<br />
+                Features real-time feedback, conversation simulations, and personalized tips.
+              </p>
+              <div className="flex gap-2">
+                <Badge variant="secondary">React</Badge>
+                <Badge variant="secondary">AI/ML</Badge>
+                <Badge variant="secondary">Full Stack</Badge>
+              </div>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader>
               <CardTitle>DECA Coaching</CardTitle>
@@ -269,6 +298,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-3">
           <Badge variant="outline">Arduino</Badge>
           <Badge variant="outline">Raspberry Pi</Badge>
+          <Badge variant="outline">PCB Design</Badge>
           <Badge variant="outline">C/C++</Badge>
           <Badge variant="outline">Java</Badge>
           <Badge variant="outline">Python</Badge>
