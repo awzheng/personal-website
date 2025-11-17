@@ -207,7 +207,7 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <h2 className="text-3xl font-bold mb-8">Software & Other Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
-          
+
           <Card>
             <CardHeader>
               <CardTitle>WarriorWit</CardTitle>
@@ -230,8 +230,8 @@ export default function Home() {
               </p>
               <div className="flex gap-2">
                 <Badge variant="secondary">React</Badge>
-                <Badge variant="secondary">AI/ML</Badge>
-                <Badge variant="secondary">Full Stack</Badge>
+                <Badge variant="secondary">Javascript</Badge>
+                <Badge variant="secondary">API</Badge>
               </div>
             </CardContent>
           </Card>
